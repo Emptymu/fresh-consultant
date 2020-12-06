@@ -4,9 +4,10 @@ import { css } from "@emotion/core";
 interface BoxPropsType {
     children: ReactNode;
     ratio?: number;
+    cssStyles?: string;
 }
 
-const Box: FC<BoxPropsType> = ({ children, ratio = 36.9 }) => (
+const Box: FC<BoxPropsType> = ({ children, ratio = 36.9, cssStyles = `` }) => (
     <div
         css={css`
             width: 100%;
@@ -25,6 +26,8 @@ const Box: FC<BoxPropsType> = ({ children, ratio = 36.9 }) => (
                 display: block;
                 padding-top: ${ratio}%;
             }
+
+            ${cssStyles}
         `}
     >
         <div

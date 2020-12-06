@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import Image from "./Image";
 import Box from "./Box";
 import { colorWhite, colorBlack } from "./styles/config";
+import { down } from "./styles/breakPoints";
 
 interface Props {
     title: string;
@@ -12,9 +13,17 @@ interface Props {
 }
 
 const Banner: FC<Props> = ({ title, description, imgProps }) => {
-    console.log(imgProps);
     return (
-        <Box>
+        <Box
+            cssStyles={down(
+                `sm`,
+                `
+                &::after {
+                    padding-top: 100%;
+                }
+                `
+            )}
+        >
             <Image {...imgProps} />
             <div
                 css={css`
@@ -29,6 +38,16 @@ const Banner: FC<Props> = ({ title, description, imgProps }) => {
                     align-items: center;
                     justify-content: center;
                     text-align: center;
+                    padding: 1rem;
+
+                    ${down(
+                        `md`,
+                        `
+                        h1 {
+                            font-size: 1.5rem;
+                        }
+                        `
+                    )}
 
                     h1,
                     p {

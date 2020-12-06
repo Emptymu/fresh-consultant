@@ -42,7 +42,7 @@ const IndexPage = () => {
             <Banner {...bannerData} />
             <Container
                 cssStyles={`
-                    padding: 3rem 0;
+                    padding: 3rem 1rem;
                     margin-bottom: 1.5rem;
 
                     section {

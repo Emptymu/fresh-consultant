@@ -51,15 +51,15 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "yarn type && gatsby build",
-    "dev": "gatsby develop",
+    "build": "yarn lint && yarn type && gatsby build",
+    "dev": "yarn clean && gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,jsx,json,md,tsx}\"",
     "type": "tsc",
     "lint": "eslint . --max-warnings=0 --ext tsx,js",
-    "deploy": "yarn lint && yarn type && yarn build --prefix-paths && gh-pages -d public -b gh-pages"
+    "deploy": "yarn clean && yarn build && gh-pages -d public -b gh-pages"
   },
   "repository": {
     "type": "git",
