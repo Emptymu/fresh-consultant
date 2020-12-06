@@ -5,103 +5,84 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
 import Container from "../components/Container";
-import Search from "../components/Search";
+import Banner from "../components/Banner";
+import { colorSecondary } from "../components/styles/config";
 
 const IndexPage = () => {
     const images = useStaticQuery(graphql`
         query {
-            allFile(filter: { relativePath: { regex: "/auto/" } }) {
+            allImageSharp {
                 nodes {
-                    childImageSharp {
-                        fluid(maxWidth: 300, maxHeight: 250, fit: COVER) {
-                            ...GatsbyImageSharpFluid
-                        }
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                        originalName
                     }
                 }
             }
         }
-    `);
+    `)?.allImageSharp?.nodes?.map(({ fluid }) => fluid);
 
-    const data = [
-        {
-            title: `Crown Coachworks Auto Body & Paint`,
-            description: `Auto Collision Repair Facility`,
-            address_components: [
-                {
-                    long_name: `2122`,
-                    short_name: `2122`,
-                    types: [`street_number`]
-                },
-                {
-                    long_name: `South Sepulveda Boulevard`,
-                    short_name: `S Sepulveda Blvd`,
-                    types: [`route`]
-                },
-                {
-                    long_name: `West Los Angeles`,
-                    short_name: `West Los Angeles`,
-                    types: [`neighborhood`, `political`]
-                },
-                {
-                    long_name: `Los Angeles`,
-                    short_name: `Los Angeles`,
-                    types: [`locality`, `political`]
-                },
-                {
-                    long_name: `Los Angeles County`,
-                    short_name: `Los Angeles County`,
-                    types: [`administrative_area_level_2`, `political`]
-                },
-                {
-                    long_name: `California`,
-                    short_name: `CA`,
-                    types: [`administrative_area_level_1`, `political`]
-                },
-                {
-                    long_name: `United States`,
-                    short_name: `US`,
-                    types: [`country`, `political`]
-                },
-                {
-                    long_name: `90025`,
-                    short_name: `90025`,
-                    types: [`postal_code`]
-                }
-            ],
-            geometry: {
-                location: {
-                    lat: 34.041218,
-                    lng: -118.438261
-                }
-            }
-        },
-        {
-            title: `Crown Coachworks Auto Body & Paint`,
-            description: `Auto Collision Repair Facility`
-        },
-        {
-            title: `Crown Coachworks Auto Body & Paint`,
-            description: `Auto Collision Repair Facility`
-        },
-        {
-            title: `Crown Coachworks Auto Body & Paint`,
-            description: `Auto Collision Repair Facility`
-        }
-    ];
+    const bannerImageProps = images
+        .filter(({ originalName }) => originalName === `banner.jpg`)
+        .map(({ originalName, ...props }) => props)[0];
+
+    const bannerData = {
+        title: `We are your personal gardening advisor`,
+        description: `You have a garden that you grow in permaculture or we do and you would like to have the
+        advice of a pro to widen your possibilities, get better results and better understand your
+        garden?`,
+        imgProps: bannerImageProps
+    };
 
     return (
         <Layout>
             <SEO title="Home" description="Welcome to Gatsby" />
+            <Banner {...bannerData} />
             <Container
                 cssStyles={`
                     padding: 3rem 0;
                     margin-bottom: 1.5rem;
-                    text-align: center;
+
+                    section {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    h2 {
+                        color: ${colorSecondary};
+                    }
                 `}
             >
-                <h2>Find the best repair facilities near you.</h2>
-                <p>Let&#39;s uncover the best auto body shops and auto mechanics nearest you.</p>
-                <Search />
+                <section>
+                    <h2>Our Services</h2>
+                    <h3>To individuals</h3>
+                    <p>
+                        Garden cultivation, design, monitoring, harvesting / Transition of seasons / Springtime
+                        summer!Garden cultivation, design, monitoring, harvesting / Transition of seasons / Springtime
+                        summer!
+                    </p>
+                    <p>
+                        Gardening advice: You have a garden that you grow in permaculture or we do and you would like to
+                        have the advice of a pro to widen your possibilities, get better results and better understand
+                        your garden?
+                    </p>
+                    <p>
+                        A system of harvesting and distribution of surplus vegetables to individuals at solidarity
+                        prices for the benefit of vulnerable populations!
+                    </p>
+                    <h3>Communities and social landlords</h3>
+                    <p>
+                        Vegetation of public areas, via vegetable garden or open ground / reintroduction of agricultural
+                        knowledge among urban populations, Permaculture Workshop / Awareness raising about soil life,
+                        biodiversity and the growth process of vegetables! With the participation of the urban
+                        populations via participative workcamps (social link, common production, living together).
+                        Recycling of urban projects organic matter from the city (trees, etc.).
+                    </p>
+                </section>
+                <section>
+                    <h2>Contact Us</h2>
+                    <p>Email: foo@gmail.com</p>
+                    <p>xxx-123-456</p>
+                </section>
             </Container>
         </Layout>
     );

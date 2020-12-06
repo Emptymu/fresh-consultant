@@ -13,7 +13,6 @@ const Header = ({ siteTitle }: Props) => (
     <header
         css={css`
             background: ${colorPrimary};
-            margin-bottom: 1.5rem;
             color: ${colorWhite};
         `}
     >

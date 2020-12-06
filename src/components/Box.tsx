@@ -22,7 +22,8 @@ const Box: FC<BoxPropsType> = ({ children, ratio = 36.9 }) => (
             }
 
             &::after {
-                margin-top: ${ratio};
+                display: block;
+                padding-top: ${ratio}%;
             }
         `}
     >
@@ -39,6 +40,14 @@ const Box: FC<BoxPropsType> = ({ children, ratio = 36.9 }) => (
                     display: block;
                     height: 100%;
                     width: 100%;
+                }
+
+                > div {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
                 }
             `}
         >

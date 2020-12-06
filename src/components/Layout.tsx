@@ -33,19 +33,13 @@ const Layout = ({ children }: Props) => {
         <>
             <Global styles={globalStyles} />
             <Header siteTitle={data.site.siteMetadata.title} />
-            <div
+            <main
                 css={css`
-                    padding: 0 1.0875rem 1.45rem;
+                    margin-bottom: 3rem;
                 `}
             >
-                <main
-                    css={css`
-                        margin-bottom: 3rem;
-                    `}
-                >
-                    {children}
-                </main>
-            </div>
+                {children}
+            </main>
             <Footer />
         </>
     );

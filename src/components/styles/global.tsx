@@ -13,6 +13,7 @@ export const globalStyles = css`
         margin: 0;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background-color: #f0f0f0;
     }
     article,
     aside,
@@ -236,12 +237,12 @@ export const globalStyles = css`
         padding-left: 0;
         padding-right: 0;
         padding-top: 0;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
         color: inherit;
         font-family: ${fontFamilyHeading};
         font-weight: bold;
         text-rendering: optimizeLegibility;
-        font-size: 2.25rem;
+        font-size: 2.5rem;
         line-height: 1.1;
     }
     h2 {
@@ -252,12 +253,12 @@ export const globalStyles = css`
         padding-left: 0;
         padding-right: 0;
         padding-top: 0;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.25rem;
         color: inherit;
         font-family: ${fontFamilyHeading};
         font-weight: bold;
         text-rendering: optimizeLegibility;
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1.1;
     }
     h3 {
@@ -273,7 +274,7 @@ export const globalStyles = css`
         font-family: ${fontFamilyHeading};
         font-weight: bold;
         text-rendering: optimizeLegibility;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         line-height: 1.1;
     }
     h4 {
@@ -386,7 +387,7 @@ export const globalStyles = css`
         padding-left: 0;
         padding-right: 0;
         padding-top: 0;
-        margin-bottom: 1.625rem;
+        margin-bottom: 1rem;
     }
     figure {
         margin-left: 0;

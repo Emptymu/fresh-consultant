@@ -30,9 +30,9 @@ const Image: FC<GatsbyImageProps> = (props) => {
             childImageSharp: { fluid }
         }
     } = data;
-    const isPropsEmpty = !Object.keys(props).length;
 
-    return <Img {...(isPropsEmpty ? { fluid } : props)} />;
+    const fluidProps = !Object.keys(props).length ? fluid : props;
+    return <Img fluid={fluidProps} />;
 };
 
 export default Image;
