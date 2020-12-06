@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImageProps } from "gatsby-image";
 
 import Layout from "../components/Layout";
 import SEO from "../components/Seo";
@@ -20,11 +21,12 @@ const IndexPage = () => {
                 }
             }
         }
-    `)?.allImageSharp?.nodes?.map(({ fluid }) => fluid);
+    `)?.allImageSharp?.nodes?.map(({ fluid }: { fluid: {} }) => fluid);
 
     const bannerImageProps = images
-        .filter(({ originalName }) => originalName === `banner.jpg`)
-        .map(({ originalName, ...props }) => props)[0];
+        .filter(({ originalName }: { originalName: string }) => originalName === `banner.jpg`)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .map(({ originalName, ...props }: { originalName: string; props: GatsbyImageProps }) => props)[0];
 
     const bannerData = {
         title: `We are your personal gardening advisor`,

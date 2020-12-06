@@ -3,7 +3,7 @@ import { css } from "@emotion/core";
 
 interface Props {
     children: React.ReactNode;
-    styles?: string;
+    cssStyles?: string;
 }
 
 const CardContent = ({ children, cssStyles = `` }: Props) => {

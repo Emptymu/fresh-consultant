@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { GatsbyImageProps } from "gatsby-image";
 import { css } from "@emotion/core";
 import Image from "./Image";
@@ -11,11 +11,7 @@ interface Props {
     imgProps: GatsbyImageProps;
 }
 
-const styles = css`
-    position: absolute;
-`;
-
-const Banner: FC<{ props: Props }> = ({ title, description, imgProps }) => {
+const Banner: FC<Props> = ({ title, description, imgProps }) => {
     console.log(imgProps);
     return (
         <Box>
