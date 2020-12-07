@@ -51,7 +51,7 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "yarn lint && yarn type && gatsby build",
+    "build": "yarn lint && yarn type && gatsby build --prefix-paths",
     "dev": "yarn clean && gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
